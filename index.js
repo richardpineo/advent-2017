@@ -20,6 +20,9 @@ require("./3a");
 console.log("\n4a".red);
 require("./4a");
 
+console.log("\n4b".red);
+require("./4b");
+
 
 console.log("\nshutting down".green)
 
