@@ -14,12 +14,13 @@ while(true) {
         break;
     }
 
-    let newIndex = index + numbers[index];
-    numbers[index] = numbers[index] + 1;
-    index = newIndex;
+    let step = numbers[index];
+    let newIndex = index + step;
+    numbers[index] = numbers[index] + (step>=3 ? -1 : 1);
+    index += step;
     count++;
 }
 
 console.log(`Solved in ${count} steps`);
-// 336905
+// 21985262
 
