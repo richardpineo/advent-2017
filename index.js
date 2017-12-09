@@ -23,6 +23,9 @@ require("./4a");
 console.log("\n4b".red);
 require("./4b");
 
+console.log("\n5a".red);
+require("./5a");
+
 
 console.log("\nshutting down".green)
 
