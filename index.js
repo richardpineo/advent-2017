@@ -36,8 +36,13 @@ if( all ) {
     
     console.log("\n6b".red);
     require("./6b");
-}
 
+    console.log("\n7a".red);
+    require("./7a");
+    
+    console.log("\n7b".red);
+    require("./7b");
+}
 
 console.log("\nshutting down".green)
 
