@@ -44,6 +44,12 @@ if( all ) {
     require("./7b");
 }
 
+console.log("\n8a".red);
+require("./8a");
+
+console.log("\n8b".red);
+require("./8b");
+
 console.log("\nshutting down".green)
 
 process.exit();
