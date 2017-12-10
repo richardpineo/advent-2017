@@ -42,13 +42,19 @@ if( all ) {
     
     console.log("\n7b".red);
     require("./7b");
+
+    console.log("\n8a".red);
+    require("./8a");
+    
+    console.log("\n8b".red);
+    require("./8b");
 }
 
-console.log("\n8a".red);
-require("./8a");
+console.log("\n9a".red);
+require("./9a");
 
-console.log("\n8b".red);
-require("./8b");
+console.log("\n9b".red);
+require("./9b");
 
 console.log("\nshutting down".green)
 
