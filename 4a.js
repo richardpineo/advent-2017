@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
 var fs = require('fs');
-var array = fs.readFileSync('4-input.txt').toString().split("\n");
+var array = fs.readFileSync('./data/4-input.txt').toString().split("\n");
 console.log(`Read file, ${array.length} lines found`);
 
 let isValid = function(v) {

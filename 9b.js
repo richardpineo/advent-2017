@@ -1,7 +1,7 @@
 let _ = require("lodash");
 
 var fs = require('fs');
-var stream = fs.readFileSync('9-input.txt').toString();
+var stream = fs.readFileSync('./data/9-input.txt').toString();
 console.log(`Read file, ${stream.length} characters found`);
 
 let garbageCount = 0;

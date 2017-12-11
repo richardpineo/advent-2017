@@ -1,7 +1,7 @@
 let _ = require("lodash");
 
 var fs = require('fs');
-var array = fs.readFileSync('8-input.txt').toString().split("\n");
+var array = fs.readFileSync('./data/8-input.txt').toString().split("\n");
 console.log(`Read file, ${array.length} lines found`);
 
 var registers = {}

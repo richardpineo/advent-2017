@@ -2,7 +2,7 @@ var colors = require('colors');
 
 console.log("starting up".green)
 
-let all = false;
+let all = true;
 if( all ) {
     console.log("\n1a".red);
     require("./1a");

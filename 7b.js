@@ -1,5 +1,5 @@
 var fs = require('fs');
-var array = fs.readFileSync('7-input.txt').toString().split("\n");
+var array = fs.readFileSync('./data/7-input.txt').toString().split("\n");
 console.log(`Read file, ${array.length} lines found`);
 
 const regex = /(\w+) \((\d+)\)( -> ([a-z, ]+)+)?/;
