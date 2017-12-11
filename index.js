@@ -19,6 +19,9 @@ if (all) {
     console.log("\n3a".red);
     require("./3a");
 
+    console.log("\n3b".red);
+    require("./3b");
+
     console.log("\n4a".red);
     require("./4a");
 
@@ -56,11 +59,11 @@ if (all) {
     require("./9b");
 }
 
-console.log("\n3a".red);
-require("./3a");
+console.log("\n10a".red);
+require("./10a");
 
-console.log("\n3b".red);
-require("./3b");
+console.log("\n10b".red);
+require("./10b");
 
 
 console.log("\nshutting down".green)
