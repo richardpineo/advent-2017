@@ -63,14 +63,16 @@ if (all) {
     
     console.log("\n10b".red);
     require("./10b");
+
+    console.log("\n11a".red);
+    require("./11a");
+    
+    console.log("\n11b".red);
+    require("./11b");
 }
 
-console.log("\n11a".red);
-require("./11a");
+console.log("\n12".red);
+require("./12");
 
-console.log("\n11b".red);
-require("./11b");
-    
 console.log("\nshutting down".green)
-
 process.exit();
