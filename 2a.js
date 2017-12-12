@@ -24,11 +24,11 @@ let checkSum = lines.reduce((checkSum, line) => {
     let tokens = line.split("\t");
     let lineParts = tokens.reduce((parts, valStr) => {
         let val = parseInt(valStr);
-        if( !parts.min || val < parts.min ) {
-            parts.min = val; 
+        if (!parts.min || val < parts.min) {
+            parts.min = val;
         }
-        if( !parts.max || val > parts.max ) {
-            parts.max = val; 
+        if (!parts.max || val > parts.max) {
+            parts.max = val;
         }
         return parts;
     }, {});

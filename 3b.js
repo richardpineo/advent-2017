@@ -7,43 +7,43 @@ const directions = {
     up: 1,
     left: 2,
     down: 3
-}
+};
 
 let direction = directions.right;
 
 let position = {
     x: 0,
     y: 0
-}
+};
 
-let grid = {}
+let grid = {};
 
-let putVal = function(position, val) {
+let putVal = function (position, val) {
     grid[JSON.stringify(position)] = val;
     console.log(`Assigning value at ${JSON.stringify(position)} to ${val}`);
     return val;
-}
+};
 
-let getVal = function(position) {
+let getVal = function (position) {
     let val = grid[JSON.stringify(position)];
-    if( val === undefined ) {
+    if (val === undefined) {
         val = 0;
     }
     // console.log(`Value at ${JSON.stringify(position)} is ${val}`);
     return val;
-}
+};
 
-let computeVal = function(position) {
-    let v = getVal({x: position.x +  1, y: position.y + -1}) +
-        getVal({x: position.x +  1, y: position.y +  0}) +
-        getVal({x: position.x +  1, y: position.y +  1}) +
-        getVal({x: position.x + -1, y: position.y +  1}) +
-        getVal({x: position.x + -1, y: position.y +  0}) +
-        getVal({x: position.x + -1, y: position.y + -1}) +
-        getVal({x: position.x +  0, y: position.y +  1}) +
-        getVal({x: position.x +  0, y: position.y + -1});
+let computeVal = function (position) {
+    let v = getVal({ x: position.x + 1, y: position.y + -1 }) +
+        getVal({ x: position.x + 1, y: position.y + 0 }) +
+        getVal({ x: position.x + 1, y: position.y + 1 }) +
+        getVal({ x: position.x + -1, y: position.y + 1 }) +
+        getVal({ x: position.x + -1, y: position.y + 0 }) +
+        getVal({ x: position.x + -1, y: position.y + -1 }) +
+        getVal({ x: position.x + 0, y: position.y + 1 }) +
+        getVal({ x: position.x + 0, y: position.y + -1 });
     return v;
-}
+};
 
 let move = function () {
     switch (direction) {
@@ -62,7 +62,7 @@ let move = function () {
         default:
             throw ("nope");
     }
-}
+};
 
 let turn = function () {
     switch (direction) {
@@ -81,19 +81,19 @@ let turn = function () {
         default:
             throw ("nope");
     }
-}
+};
 
 let stepCount = 0;
 let stepSize = 1;
 let turnCount = 0;
 
-putVal({x:0, y:0}, 1);
+putVal({ x: 0, y: 0 }, 1);
 
-for (let i = 1;; i++) {
+for (let i = 1; ; i++) {
     // update position
     move();
 
-    if( val < putVal(position, computeVal(position))) {
+    if (val < putVal(position, computeVal(position))) {
         console.log(`Ended at position ${JSON.stringify(position)} with value ${getVal(position)}`);
         console.log(`Distance from start: ${Math.abs(position.x) + Math.abs(position.y)}`);
         break;
@@ -103,7 +103,7 @@ for (let i = 1;; i++) {
     if (stepCount === stepSize) {
         turn();
         turnCount++;
-        if( turnCount === 2 ) {
+        if (turnCount === 2) {
             turnCount = 0;
             stepSize++;
         }

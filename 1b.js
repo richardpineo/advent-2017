@@ -13,5 +13,5 @@ let count = letters.reduce((count, current, index, letters) => {
     return count + value(letters[index], letters[compareIndex]);
 }, 0);
 
-console.log( `output: ${count}`);
+console.log(`output: ${count}`);
 // 1072

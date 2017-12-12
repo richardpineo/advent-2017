@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 let _ = require("lodash");
 
 let compute = function (input) {
@@ -12,13 +14,13 @@ let compute = function (input) {
 
     let normalize = function (x) {
         return x % 256;
-    }
+    };
 
     let swap = function (a, b) {
         let t = sequence[a];
         sequence[a] = sequence[b];
         sequence[b] = t;
-    }
+    };
 
     let reverseSection = function (start, stop) {
         let len = stop - start;
@@ -26,11 +28,11 @@ let compute = function (input) {
         for (let i = 0; i < count; i++) {
             swap(normalize(start + i), normalize(stop - i));
         }
-    }
+    };
 
     let dump = function () {
         console.log(sequence.map((x, idx) => idx === position ? (`[${x}]`) : x).join(","));
-    }
+    };
 
     let skipSize = 0;
     let position = 0;
@@ -53,7 +55,7 @@ let compute = function (input) {
             }
             return x;
         }, chunk[0]);
-    }
+    };
 
     // let test = [65, 27, 9, 1, 4, 3, 40, 50, 91, 7, 6, 0, 2, 5, 68, 22];
     // console.log(`test = ${densify(test)}`);
@@ -82,7 +84,7 @@ let compute = function (input) {
     }, "");
 
     console.log(`Hashed ${code} for input ${input}`);
-}
+};
 
 let inputs = [
     "",
@@ -90,7 +92,7 @@ let inputs = [
     "1,2,3",
     "1,2,4",
     "212,254,178,237,2,0,1,54,167,92,117,125,255,61,159,164"
-]
+];
 inputs.forEach(compute);
 
 // 96de9657665675b51cd03f0b3528ba26

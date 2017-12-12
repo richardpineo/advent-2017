@@ -7,14 +7,14 @@ const directions = {
     up: 1,
     left: 2,
     down: 3
-}
+};
 
 let direction = directions.right;
 
 let position = {
     x: 0,
     y: 0
-}
+};
 
 let move = function () {
     switch (direction) {
@@ -33,7 +33,7 @@ let move = function () {
         default:
             throw ("nope");
     }
-}
+};
 
 let turn = function () {
     switch (direction) {
@@ -52,7 +52,7 @@ let turn = function () {
         default:
             throw ("nope");
     }
-}
+};
 
 let stepCount = 0;
 let stepSize = 1;
@@ -65,7 +65,7 @@ for (let i = 1; i < val; i++) {
     if (stepCount === stepSize) {
         turn();
         turnCount++;
-        if( turnCount === 2 ) {
+        if (turnCount === 2) {
             turnCount = 0;
             stepSize++;
         }

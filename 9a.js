@@ -1,47 +1,49 @@
+/*jshint esversion: 6 */
+
 let _ = require("lodash");
 
 var fs = require('fs');
 var stream = fs.readFileSync('./data/9-input.txt').toString();
 console.log(`Read file, ${stream.length} characters found`);
 
-let cleanStream = function(s) {
+let cleanStream = function (s) {
     let garbage = false;
     let correct = false;
     let chars = s.split("");
     return chars.reduce((clean, c) => {
-        if(garbage) {
-            if(correct) {
+        if (garbage) {
+            if (correct) {
                 correct = false;
                 return clean;
             }
-            if(c === '!') {
+            if (c === '!') {
                 correct = true;
                 return clean;
             }
-    
-            if(c === '>') {
+
+            if (c === '>') {
                 garbage = false;
                 return clean;
             }
             return clean;
         }
-        if(c === '<') {
+        if (c === '<') {
             garbage = true;
             return clean;
         }
-        if(c === '}' || c === "{") {
+        if (c === '}' || c === "{") {
             return clean + c;
-        } 
+        }
         return clean;
     }, "");
-}
+};
 
 let cs = cleanStream(stream);
 //console.log(cs);
 
 let csArray = cs.split("");
 
-let calcScore = function(array) {
+let calcScore = function (array) {
     var level = 1;
     let score = array.reduce((score, c) => {
         level = level + ((c === '{') ? 1 : -1);

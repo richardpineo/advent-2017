@@ -8,13 +8,13 @@ function value(a, b) {
 
 let letters = code.split("");
 let count = letters.reduce((count, current, index, letters) => {
-    if( index < letters.length -1 ) {
-        return count + value(letters[index], letters[index+1]);
+    if (index < letters.length - 1) {
+        return count + value(letters[index], letters[index + 1]);
     }
     else {
         return count + value(letters[index], letters[0]);
     }
 }, 0);
 
-console.log( `output: ${count}`);
+console.log(`output: ${count}`);
 // 1216

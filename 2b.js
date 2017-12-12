@@ -24,23 +24,23 @@ let checkSum = lines.reduce((checkSum, line) => {
     let tokens = line.split("\t");
 
     let lineCheckSum = tokens.reduce((value, valStr, index, array) => {
-        if( value ) {
+        if (value) {
             return value;
         }
 
         let numer = parseInt(valStr);
         return array.reduce((val, compareVal, compareIndex) => {
-            if( val ) {
+            if (val) {
                 return val;
             }
-            if( compareIndex !== index ) {
+            if (compareIndex !== index) {
                 let denom = parseInt(compareVal);
                 if (numer % denom === 0 && numer > denom)
                     return numer / denom;
-            } 
+            }
         }, undefined);
     }, undefined);
-    
+
     return checkSum + lineCheckSum;
 }, 0);
 

@@ -8,8 +8,8 @@ let numbers = array.map(v => parseInt(v));
 
 let index = 0;
 let count = 0;
-while(true) {
-    if( index >= numbers.length || index < 0 ) {
+while (true) {
+    if (index >= numbers.length || index < 0) {
         console.log("exit found");
         break;
     }

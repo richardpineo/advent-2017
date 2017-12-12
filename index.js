@@ -19,13 +19,13 @@ let all = [
     "./12"
 ];
 
-let toRun = function() {
-    if( process.argv.length > 2 ) {
+let toRun = function () {
+    if (process.argv.length > 2) {
         let tests = process.argv.slice(2);
         console.log(`Running tests ${tests.join(", ")}`.gray);
         return tests;
     }
-    console.log("Running all tests...".gray)
+    console.log("Running all tests...".gray);
     return all;
 };
 

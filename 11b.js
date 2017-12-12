@@ -29,7 +29,7 @@ let getOffset = function (move) {
         default:
             throw ("nope");
     }
-}
+};
 
 let move = function (offset) {
     position = {
@@ -37,11 +37,11 @@ let move = function (offset) {
         y: position.y + offset.y,
         z: position.z + offset.z,
     };
-}
+};
 
 let distance = function (a, b) {
     return (Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z)) / 2;
-}
+};
 
 let maxDistance = 0;
 moves.forEach((m) => {

@@ -15,11 +15,11 @@ let isValid = function(v) {
         let matches = tokens.filter(t => t === token);
         return matches.length === 1;
     }, true);
-}
+};
 
 let numValid = array.reduce((count, val) => {
     return count + (isValid(val) ? 1 : 0);
-}, 0)
+}, 0);
 
 console.log(`${numValid} matching pass phrases found`);
 // 186
