@@ -57,15 +57,20 @@ if (all) {
 
     console.log("\n9b".red);
     require("./9b");
+
+    console.log("\n10a".red);
+    require("./10a");
+    
+    console.log("\n10b".red);
+    require("./10b");
 }
 
-console.log("\n10a".red);
-require("./10a");
+console.log("\n11a".red);
+require("./11a");
 
-console.log("\n10b".red);
-require("./10b");
-
-
+console.log("\n11b".red);
+require("./11b");
+    
 console.log("\nshutting down".green)
 
 process.exit();
