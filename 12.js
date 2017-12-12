@@ -51,6 +51,7 @@ let consolidate = function() {
 while( consolidate() ) {}
 
 let elapsedMs = new Date().getTime() - start.getTime();
+console.log("");
 console.log(`Consolidated to ${groups.length} groups in ${elapsedMs} ms`);
 
 console.log(`${groups[0].length} members of the group containing 0`);
