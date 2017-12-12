@@ -1,78 +1,40 @@
+/*jshint esversion: 6 */
+
 var colors = require('colors');
 
-console.log("starting up".green)
+console.log("starting up".blue);
 
-let all = false;
-if (all) {
-    console.log("\n1a".red);
-    require("./1a");
+let all = [
+    "./1a", "./1b",
+    "./2a", "./2b",
+    "./3a", "./3b",
+    "./4a", "./4b",
+    "./5a", "./5b",
+    "./6a", "./6b",
+    "./7a", "./7b",
+    "./8a", "./8b",
+    "./9a", "./9b",
+    "./10a", "./10b",
+    "./11a", "./11b",
+    "./12"
+];
 
-    console.log("\n1b".red);
-    require("./1b");
+let toRun = function() {
+    if( process.argv.length > 2 ) {
+        let tests = process.argv.slice(2);
+        console.log(`Running tests ${tests.join(", ")}`.gray);
+        return tests;
+    }
+    console.log("Running all tests...".gray)
+    return all;
+};
 
-    console.log("\n2a".red);
-    require("./2a");
+toRun().forEach(r => {
+    console.log("-----".green);
+    console.log(`--> Solving advent puzzle ${r}`.red);
+    require(r);
+    console.log("-----".green);
+});
 
-    console.log("\n2b".red);
-    require("./2b");
-
-    console.log("\n3a".red);
-    require("./3a");
-
-    console.log("\n3b".red);
-    require("./3b");
-
-    console.log("\n4a".red);
-    require("./4a");
-
-    console.log("\n4b".red);
-    require("./4b");
-
-    console.log("\n5a".red);
-    require("./5a");
-
-    console.log("\n5b".red);
-    require("./5b");
-
-    console.log("\n6a".red);
-    require("./6a");
-
-    console.log("\n6b".red);
-    require("./6b");
-
-    console.log("\n7a".red);
-    require("./7a");
-
-    console.log("\n7b".red);
-    require("./7b");
-
-    console.log("\n8a".red);
-    require("./8a");
-
-    console.log("\n8b".red);
-    require("./8b");
-
-    console.log("\n9a".red);
-    require("./9a");
-
-    console.log("\n9b".red);
-    require("./9b");
-
-    console.log("\n10a".red);
-    require("./10a");
-    
-    console.log("\n10b".red);
-    require("./10b");
-
-    console.log("\n11a".red);
-    require("./11a");
-    
-    console.log("\n11b".red);
-    require("./11b");
-}
-
-console.log("\n12".red);
-require("./12");
-
-console.log("\nshutting down".green)
+console.log("\nshutting down".blue);
 process.exit();

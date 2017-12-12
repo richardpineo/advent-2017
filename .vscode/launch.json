@@ -6,6 +6,7 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceRoot}/index.js"
+            //"args": [ "./1a", "./1b" ]
         },
             {
                 "type": "node",
