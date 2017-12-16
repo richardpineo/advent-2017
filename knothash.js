@@ -1,4 +1,6 @@
 /*jshint esversion: 6 */
+/*jshint loopfunc: true */
+
 let _ = require("lodash");
 
 var compute = function (input) {
