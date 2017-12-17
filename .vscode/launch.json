@@ -7,7 +7,7 @@
             "name": "Launch Program",
             "program": "${workspaceRoot}/index.js",
             "args": [
-                "./17"
+                "./17a"
             ]
         },
         {   
