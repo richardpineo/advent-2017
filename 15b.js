@@ -2,10 +2,16 @@
 
 let hexToBinary = require("hex-to-binary");
 
-let generator = function(val, factor) {
-    const Divisor = 2147483647;
-    let newVal = (val * factor) % Divisor;
-    return newVal;
+const Divisor = 2147483647;
+
+let generator = function(val, factor, multipleOf) {
+    let newVal = val;
+    while(true) {
+        newVal = (newVal * factor) % Divisor;
+        if( 0 === ( newVal % multipleOf ) ) {
+            return newVal;
+        }
+    }
 };
 
 let compareVals = function(a, b) {
@@ -32,18 +38,23 @@ const Factor = {
     b: 48271
 };
 
+const MultipleOf = {
+    a: 4,
+    b: 8
+}
+
 Seeds.forEach((s) => {
     console.log(`Calculating seed value ${JSON.stringify(s)}.`);
     let count = 0;
-    const consider = 40000000;
+    const consider = 5000000;
     let value = s;
     for( let i=0; i<consider; i++) {
-        value.a = generator(value.a, Factor.a);
-        value.b = generator(value.b, Factor.b);
+        value.a = generator(value.a, Factor.a, MultipleOf.a);
+        value.b = generator(value.b, Factor.b, MultipleOf.b);
         if( compareVals(value.a, value.b)) {
             count++;
         }
      }
      console.log(`The count for ${JSON.stringify(s)} is ${count}.`);
 });
-// 15a: 569
+// 298
