@@ -2,72 +2,89 @@
 
 let _ = require("lodash");
 
-let MaxBuffer = 50000000;
-let buffer = new Array(MaxBuffer);
-
-let bufferLen;
+let list;
 let currentPosition;
 let init = function () {
-    buffer[0] = 0;
-    bufferLen = 1;
+    list = { next: null, data: 0 };
     currentPosition = 0;
 };
 
 let dump = function () {
-    buffer.forEach((b, index) => {
-        process.stdout.write(index === currentPosition ? `(${b}) ` : `${b} `);
-    });
+    let index = 0;
+    for (let cur = list; cur; cur = cur.next) {
+        process.stdout.write(index === currentPosition ? `(${cur.data}) ` : `${cur.data} `);
+        index++;
+    }
+};
+
+let nodeAtOrLast = function (pos) {
+    let cur = list;
+    for (let index = 0; index < pos; index++) {
+        if (cur.next === null) {
+            return cur;
+        }
+        cur = cur.next;
+    }
+    return cur;
+};
+
+let listLength = function () {
+    let index = 0;
+    for (let cur = list; cur; cur = cur.next, index++);
+    return index;
 };
 
 let step = function (value, stepSize) {
-    currentPosition = (currentPosition + stepSize) % bufferLen + 1;
-    for(let i=bufferLen; i>currentPosition; i--) {
-        buffer[i] = buffer[i-1];
-    }
-    buffer[currentPosition] = value;
-    bufferLen++;
-};
-
-let stepSlow = function (value, stepSize) {
-    for (let i = 0; i < stepSize; i++) {
-        currentPosition++;
-        if (currentPosition >= bufferLen) {
-            currentPosition = 0;
-        }
-    }
-    currentPosition++;
-    buffer.splice(currentPosition, 0, value);
+    currentPosition = (currentPosition + stepSize) % listLength() + 1;
+    let node = nodeAtOrLast(currentPosition);
+    let newVal = { next: node.next, data: value };
+    node.next = newVal;
 };
 
 const tests = [
-    { input: 3, count: 2017 },
-    { input: 304, count: 2017 },
-    { input: 304, count: 50000000, find: 0 }
+    { input: 3, count: 2017, find: 2017 },
+    { input: 304, count: 2017, find: 2017 },
+    { input: 304, count: 5000000, find: 0 }
 ];
 
-let importantPosition = function (findVal) {
-    if (!findVal) {
-        return currentPosition + 1;
+let valueAfter = function (findVal) {
+    let cur = list;
+    while (cur.data !== findVal) {
+        cur = cur.next;
     }
-    return buffer.findIndex(b => b === findVal) + 1;
+    return cur.next.data;
 };
 
+console.log("Warning: This run can take up to an hour or more");
+
 tests.forEach(t => {
+    console.log(`Starting evaluation of ${JSON.stringify(t)}`);
+
     init();
 
+    let startTime = Date.now();
+    let blockTime = startTime;
+    let dotsAt = 10000;
+    let timeAt = 100000;
+    let numBlocks = 0;
     for (let i = 1; i <= t.count; i++) {
         step(i, t.input);
-        
-        if ((i % 1000) === 0) {
+
+        if ((i % dotsAt) === 0) {
             process.stdout.write(".");
         }
 
-        if (0 === i % 1000000) {
-            console.log(`${i} values processed`);
+        if ((i % timeAt) === 0) {
+            let now = Date.now();
+            let elapsed = (now - blockTime) / 1000;
+            let elapsedTotal = (now - startTime) / 1000;
+            numBlocks++;
+            console.log(`  ${i} values in ${Math.round(elapsed)}s, ${Math.round(elapsedTotal)}s total, average ${Math.round(elapsedTotal / numBlocks)}s`);
+            blockTime = Date.now();
         }
     }
 
-    console.log(`Inputs ${JSON.stringify(t)} gives value ${buffer[importantPosition(t.find)]}`);
+    console.log(`${JSON.stringify(t)} gives value ${valueAfter(t.find)}`);
 });
 
 // 1173
