@@ -29,7 +29,7 @@ let particles = particlesRaw.map((p, idx) => {
             y: parseInt(m[8]),
             z: parseInt(m[9])
         },
-        distance: function() {
+        distance: function () {
             return Math.abs(this.p.x) + Math.abs(this.p.y) + Math.abs(this.p.z);
         }
     };
@@ -48,12 +48,22 @@ let tick = () => {
     });
 };
 
-const NumSteps = 100000;
-for(let i=0; i<NumSteps; i++) {
+const NumSteps = 1000;
+let log = [];
+let last = null;
+for (let i = 0; i < NumSteps; i++) {
     tick();
+    let closest = _.minBy(particles, p => p.distance());
+    if (last === null || last.id !== closest.id) {
+        last = {
+            id: closest.id,
+            index: i,
+            distance: closest.distance()
+        };
+        log.push(last);
+    }
 }
-let closestParticle = _.minBy(particles, p => p.distance());
 
-console.log(`Closest particle is ${closestParticle.id}`);
-console.log(`${JSON.stringify(closestParticle)}`);
+console.log(`Closest particle is ${JSON.stringify(last)}`);
+console.log(`${JSON.stringify(last)}`);
 // 364  DUH
