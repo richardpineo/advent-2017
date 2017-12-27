@@ -28,6 +28,8 @@ let sameDirection = (a, b) => {
     return a.x === b.x && a.y === b.y;
 };
 
+let numSteps = 1;
+
 let move = (c, d) => {
     return {
         x: c.x + d.x,
@@ -42,6 +44,7 @@ let moveCurrent = () => {
         throw ("fin");
     }
     current = newCurrent;
+    numSteps++;
 };
 
 let isLetter = c => c.toLowerCase() != c.toUpperCase();
@@ -65,7 +68,6 @@ let checkLR = () => {
     } else {
         throw ("Nope!");
     }
-    moveCurrent();
 };
 
 let checkUD = () => {
@@ -76,7 +78,6 @@ let checkUD = () => {
     } else {
         throw ("Nope!");
     }
-    moveCurrent();
 };
 
 let turn = () => {
@@ -87,6 +88,7 @@ let turn = () => {
     } else {
         throw ("Not even a little bit");
     }
+    moveCurrent();
 };
 
 let found = "";
@@ -118,9 +120,11 @@ catch (e) {
     if( e === "fin") {
         console.log(`Exit found: ${currentCharacter} @ ${JSON.stringify(current)}`);
         console.log(`Letters: ${found}`);
+        console.log(`${numSteps} Steps`);
     } else {
         console.log(`Oops: ${e}`);
     }
 }
 
 // QPRYCIOLU
+// 16162
